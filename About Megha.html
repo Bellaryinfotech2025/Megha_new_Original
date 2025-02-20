@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Megha Super Structures</title>
+    <link rel="icon" href="/images/logoo megha.jpg" type="image/jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            width: 100%;
+            background-image: url('/images/default\ imag\ e.png');
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #2563eb;
+        }
+
+        .btn-primary:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            color: maroon;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* CEO Section */
+        .ceo-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .ceo-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .ceo-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .ceo-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .ceo-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Mission Vision Section */
+        .mission-vision {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .mv-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mv-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .mv-box i {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .team-image {
+            position: relative;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .team-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .team-overlay {
+            opacity: 1;
+        }
+
+        .team-info {
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .ceo-content {
+                grid-template-columns: 1fr;
+            }
+
+            .mv-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /*abour section blue color heere----------------------------------------*/
+        .bodyofabout {
+            background-color: #002D62;
+            color: white;
+        }
+
+        .container-a {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            margin: 20px 0;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-title::after {
+            content: '→';
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-title::after {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .right-panel {
+            background: #001A3B;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .menu-list {
+            list-style: none;
+        }
+
+        .menu-item {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-item:hover {
+            background: rgba(255,255,255,0.05);
+            padding-left: 20px;
+        }
+
+        .menu-item::after {
+            content: '→';
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover::after {
+            opacity: 1;
+        }
+
+        .approach-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+
+        .approach-content {
+            padding-right: 20px;
+        }
+
+        .approach-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .approach-section {
+                grid-template-columns: 1fr;
+            }
+
+            .approach-content {
+                padding-right: 0;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+        }
+    /*bosy of ceo section here css*/
+    .body0fceo {
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+
+        .director-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #002D62; /* Blue background */
+            padding: 50px 10%;
+            color: white;
+            flex-wrap: wrap;
+        }
+
+        .director-image {
+            width: 40%;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .director-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .director-text {
+            width: 55%;
+            text-align: left;
+        }
+
+        .director-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .director-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .director-text a {
+            padding: 12px 20px;
+            background-color: #ffffff;
+            color: #2d65f0;
+            font-weight: bold;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .director-text a:hover {
+            background-color: #4263eb;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .director-section {
+                padding: 30px 5%;
+            }
+
+            .director-image {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .director-text {
+                width: 100%;
+                text-align: center;
+            }
+
+            .director-text h2 {
+                font-size: 2rem;
+            }
+        }
+        /*section of dsing gradint color*/
+        .contact-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #4b6cb7 0%, #8249a5 100%);
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .contact-heading {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .contact-subheading {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-email {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .contact-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .contact-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: -50px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .contact-heading {
+                font-size: 2.5rem;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .contact-image img {
+                margin-top: 0;
+            }
+        }
+        /*iocns of megha specification shere*/
+        .bodyoficons {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, #2c3e50, #3f4c6b);
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 80px;
+        }
+
+        .icon-sets {
+            position: relative;
+            height: 200px;
+        }
+
+        .icon-set {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+
+        .icon-set.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 200px;
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-wrapper svg {
+            width: 100%;
+            height: 100%;
+            stroke: white;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .icon-item h3 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 50px;
+            }
+
+            .icon-set {
+                gap: 30px;
+            }
+
+            .icon-item {
+                width: auto;
+            }
+
+            .icon-wrapper {
+                width: 50px;
+                height: 50px;
+            }
+
+            .icon-item h3 {
+                font-size: 1rem;
+            }
+        }
+ /*footer**************************************/
+ .footer-link {
+            color: #6B7280;
+            transition: color 0.2s ease;
+            display: block;
+            padding: 4px 0;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: #111827;
+        }
+
+        .social-icon {
+            color: #4B5563;
+            transition: all 0.2s ease;
+            margin-right: 1rem;
+        }
+
+        .social-icon:hover {
+            color: #111827;
+            transform: translateY(-2px);
+        }
+
+        .footer-heading {
+            color: #111827;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-logo-section {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-logo-section {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 style="color: white;font-weight: bold;font-family: 'Times New Roman', Times, serif;font-size: 3rem;">About Us</h1>
+            <p>Shape the future of machine supply with innovation and excellence</p>
+            <button class="btn btn-primary">Join Our Team</button>
+        </div>
+    </section>
+<!--about section here-->
+<section class="bodyofabout">
+    <div class="container-a">
+        <h1 class="main-title">About Megha Super Structures</h1>
+<p style="font-size: 1rem;font-family:'Times New Roman', Times, serif;">Megha Super Structures stands as a pioneering leader in the construction industry, setting new benchmarks for excellence and innovation.
+     With a stellar reputation for delivering top-notch solutions, the company specializes in a range of services including state-of-the-art Ista machine supply, efficient workforce management, and the construction of high-quality flyovers. Each project reflects the company’s unwavering commitment to precision, safety, and sustainability. Whether it's providing skilled labor, supplying cutting-edge machinery, or building robust flyovers that redefine urban landscapes, Megha Super Structures is synonymous with reliability, excellence, and transformative growth. Their unparalleled expertise and dedication make them
+     the go-to choice for any major construction project, ensuring a lasting impact on infrastructure development.</p>
+        <div class="grid-container">
+            <!-- Corporate Overview -->
+            <div class="card section">
+                <img src="/images/imageabout.jpg" alt="Corporate Overview">
+                <div class="card-content">
+                    <h2 class="card-title">Corporate Overview</h2>
+                    <p>Purpose & Values</p>
+                </div>
+            </div>
+
+            <!-- Leadership -->
+            <div class="card section">
+                <img src="/images/image new one 1.jpg" alt="Leadership">
+                <div class="card-content">
+                    <h2 class="card-title">Leadership</h2>
+                    <p>Board of Directors</p>
+                </div>
+            </div>
+
+            <!-- Locations -->
+            <div class="card section">
+                <img src="/images/imageabout1" alt="Locations">
+                <div class="card-content">
+                    <h2 class="card-title">Locations</h2>
+                    <p>Meghass Management Team</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="approach-section section">
+            <div class="approach-content">
+                <h2 class="card-title">Our Approach</h2>
+                <ul class="menu-list">
+                    <li class="menu-item">Community Relations</li>
+                    <li class="menu-item">Compliance & Ethics</li>
+                    <li class="menu-item">Corporate Reporting</li>
+                    <li class="menu-item">Governance</li>
+                    <li class="menu-item">Health, Safety & Environmental</li>
+                    <li class="menu-item">Inclusion</li>
+                    <li class="menu-item">Newsroom</li>
+                    <li class="menu-item">Investor Relations</li>
+                </ul>
+            </div>
+            <div class="approach-image">
+                <img src="/images/image of carousel 2.jpg" alt="Our Approach">
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- About Section -->
+     
+        
+
+    <!-- CEO Section -->
+    <section class="body0fceo">
+        <div class="director-section">
+            <!-- Director Image -->
+            <div class="director-image">
+                <img src="/images/logoo megha.jpg" alt="Director's Image">
+            </div>
+    
+            <!-- Director's Text -->
+            <div class="director-text">
+                <h2>A Message from Our Director</h2>
+                <p>At Megha Super Structures, we are more than just a builder —we are the backbone of progress in modern infrastructure. As a leading provider of flyover construction machinery and heavy equipment, we take pride in powering landmark projects that shape cities and improve connectivity. Our commitment to quality, innovation, and reliability ensures that every machine we supply meets the highest industry standards, optimizing efficiency and safety at every stage of construction. With cutting-edge technology, a dedicated team, and a vision for a stronger tomorrow, we continue to drive excellence in bridge and flyover development.</p>
+                <p>Thank you for choosing us as your trusted partner in building a future of seamless connectivity and engineering brilliance. Together, we lift possibilities to new heights!</p>
+                 
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Vision Section -->
+    <section class="mission-vision section">
+        <div class="container">
+            <div class="mv-grid">
+                <div class="mv-box">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Our Mission</h3>
+                    <p>To deliver world-class infrastructure solutions that enhance the quality of life and contribute to national development through innovation, sustainability, and excellence in execution.</p>
+                </div>
+                <div class="mv-box">
+                    <i class="fas fa-eye"></i>
+                    <h3>Our Vision</h3>
+                    <p>To be the most trusted and respected infrastructure development company, known for setting new benchmarks in quality, safety, and innovation while creating lasting value for all stakeholders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--iocns of megha specificar=tions ,-->
+<section class="bodyoficons">
+    <div class="container">
+        <h1>Our<br>Specialization</h1>
+        <div class="icon-sets">
+            <!-- Set 1 -->
+            <div class="icon-set active">
+                <div class="icon-item">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3>Civil</h3>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                    </div>
+                    <h3>MEP</h3>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Infrastructure</h3>
+                </div>
+            </div>
+
+            <!-- Set 2 -->
+            <div class="icon-set">
+                <div class="icon-item">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        </svg>
+                    </div>
+                    <h3>Design</h3>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3>Planning</h3>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h3>Construction</h3>
+                </div>
+            </div>
+
+            <!-- Set 3 -->
+            <div class="icon-set">
+                <div class="icon-item">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Quality</h3>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </div>
+                    <h3>Management</h3>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3>Development</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Team Section -->
+    <section class="team-section section">
+        <div class="container">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="/images/management images about.jpg" alt="Management Team">
+                        <div class="team-overlay">
+                            <div class="team-info">
+                                <h3>Management Team</h3>
+                                <p>Our experienced management team brings decades of expertise in project planning and execution.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="/images/image10.JPG" alt="Engineering Team">
+                        <div class="team-overlay">
+                            <div class="team-info">
+                                <h3>Engineering Team</h3>
+                                <p>Our engineers are the backbone of our success, bringing innovation to every project.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="/images/image18.JPG" alt="Construction Team">
+                        <div class="team-overlay">
+                            <div class="team-info">
+                                <h3>Construction Team</h3>
+                                <p>Skilled professionals ensuring the highest quality in construction execution.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="/images/image11.JPG" alt="Support Team">
+                        <div class="team-overlay">
+                            <div class="team-info">
+                                <h3>Support Team</h3>
+                                <p>Dedicated support staff ensuring smooth operations across all projects.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--section of desing of gradimt cpolor-->
+    <div class="contact-container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h1 class="contact-heading">Click Here to<br>Get In Touch</h1>
+                
+                <h2 class="contact-subheading">For Sales enquires</h2>
+                <a href="mailto:marketing@conneqtcorp.com" class="contact-email">meghasuperstructure@yahoo.com</a>
+                
+                <h2 class="contact-subheading">For enquires</h2>
+                <a href="mailto:hr.helpdesk@conneqtcorp.com" class="contact-email">meghasuperstructure@yahoo.com</a>
+                
+                 <div class="flex mb-6">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                </div>
+            </div>
+            
+            <div class="contact-image">
+                <img src="/images/IMG_0293.JPG" alt="Customer Service Representative">
+            </div>
+        </div>
+    </div>
+ <!----------------------------------Footer----------------------------------->
+ <footer class="py-16 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+        <div class="footer-grid grid grid-cols-1 md:grid-cols-6 gap-8">
+            <!-- Logo Section -->
+            <div class="footer-logo-section md:col-span-1">
+                <img src="/images/logoo megha.jpg" alt="kekaaa" style="width: 100px;height: 100px;"/>
+                <h1 class="logo text-3xl mb-4">Megha Super Structures</h1>
+                <p class="text-gray-600 mb-6">We build and create top-notch Flyovers wiht our world-class Engineers.</p>
+                <div class="flex mb-6">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+
+            <!-- Features Column -->
+            <div class="md:col-span-1">
+                <h3 class="footer-heading">Core Business</h3>
+                <a href="#" class="footer-link">Home</a>
+                <a href="#" class="footer-link">About Us</a>
+                <a href="#" class="footer-link">Core Business</a>
+                <a href="#" class="footer-link">Projects</a>
+                <a href="#" class="footer-link">Strengths</a>
+                <a href="#" class="footer-link">Careers</a>
+                <a href="#" class="footer-link">Contact Us</a>
+                <a href="#" class="footer-link">Get in Touch</a>
+                 
+            </div>
+
+            <!-- Solutions Column -->
+            <div class="md:col-span-1">
+                <h3 class="footer-heading">Solutions</h3>
+                <a href="#" class="footer-link">Fantastic Engineers</a>
+                <a href="#" class="footer-link">Quality Work and cement</a>
+                <a href="#" class="footer-link">Quality Workers</a>
+                <a href="#" class="footer-link">Building Flyovers</a>
+            </div>
+
+            <!-- Community Column -->
+            <div class="md:col-span-1">
+                <h3 class="footer-heading">Company</h3>
+                <a href="#" class="footer-link">About us</a>
+                <a href="#" class="footer-link">Careers</a>
+                <a href="#" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Legal Details</a>
+                <a href="#" class="footer-link">Terms of Use</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Cookie Policy</a>
+            </div>
+
+            <!-- Resources Column -->
+            <div class="md:col-span-1">
+                <h3 class="footer-heading">Resources</h3>
+                <a href="#" class="footer-link">Plans</a>
+                <a href="#" class="footer-link">For Foundation</a>
+                <a href="#" class="footer-link">Licensing</a>
+                <a href="#" class="footer-link">Help</a>
+                <a href="#" class="footer-link">Engineers</a>
+                <a href="#" class="footer-link">Workers</a>
+                <a href="#" class="footer-link">Authentic Desing for Flyover</a>
+                <a href="#" class="footer-link">Get in Touch</a>
+            </div>
+
+            <!-- Company Column -->
+            <div class="md:col-span-1">
+                <h3 class="footer-heading">Reach Us</h3>
+                <a href="#" class="footer-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-check-fill" viewBox="0 0 16 16">
+                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 4.697v4.974A4.5 4.5 0 0 0 12.5 8a4.5 4.5 0 0 0-1.965.45l-.338-.207z"/>
+                    <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0m-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686"/>
+                  </svg>meghasuperstructure@yahoo.com</a>
+                <a href="#" class="footer-link"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-inbound-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0"/>
+                  </svg>+91 9449419000</a>
+                <a href="#" class="footer-link"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-inbound-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0"/>
+                  </svg>+91 9902398269</a>
+                <a href="#" class="footer-link"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-substack" viewBox="0 0 16 16">
+                    <path d="M15 3.604H1v1.891h14v-1.89ZM1 7.208V16l7-3.926L15 16V7.208zM15 0H1v1.89h14z"/>
+                  </svg>Reg Office : Megha Estates</a>
+                <a href="#" class="footer-link">Siruguppa Road , Vakkareni Camp  ,  </a>
+                <a href="#" class="footer-link">Near Brilliant School</a>
+                <a href="#" class="footer-link">Bellari - 583 103 Karnataka</a>
+            </div>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <p class="text-gray-600 text-sm">© meghasuperstructures 2025</p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach((section) => {
+            observer.observe(section);
+        });
+
+        /*about section blue clor here*/ 
+          // Animation on scroll
+          const sections = document.querySelectorAll('.section');
+        
+        const observerr = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.5s forwards';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observerr.observe(section);
+        });
+
+
+        /*icons of megha specifications here*/
+
+        const iconSets = document.querySelectorAll('.icon-set');
+        let currentSet = 0;
+
+        function rotateIcons() {
+            // Remove active class from current set
+            iconSets[currentSet].classList.remove('active');
+            
+            // Move to next set
+            currentSet = (currentSet + 1) % iconSets.length;
+            
+            // Add active class to new set
+            iconSets[currentSet].classList.add('active');
+        }
+
+        // Rotate every 3 seconds
+        setInterval(rotateIcons, 3000);
+    </script>
+</body>
+</html>
