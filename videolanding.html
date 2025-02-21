@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Landing Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        .hero-video-carousel {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        video.video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .overlay-video-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 4rem;
+            margin-top: 4rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .container-video-carousel {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .container-video-carousel:hover {
+            transform: translateY(-5px);
+        }
+
+        .content-video-carousel {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-video-carousel.active {
+            display: block;
+        }
+
+        .content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #4ecdc4;
+        }
+
+        .content-video-carousel p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: flex-start;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+                margin-top: 2rem;
+            }
+
+            .container-video-carousel {
+                width: calc(100% - 40px);
+                left: 20px;
+                bottom: 20px;
+                padding: 1rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-video-carousel">
+        <video autoplay muted loop class="video-bg">
+            <source src="/images/megha new video.mp4" type="video/mp4">
+        </video>
+        <div class="overlay-video-carousel">
+            <h1 class="title">Welcome to the Future</h1>
+            <div class="container-video-carousel">
+                <div class="content active">
+                    <h2>Innovation at Its Best</h2>
+                    <p>Discover cutting-edge technology that transforms the way you live and work.</p>
+                    <div class="buttons">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            Get Started
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-info-circle"></i>
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                <div class="content-video-carousel">
+                    <h2>Smart Solutions</h2>
+                    <p>Experience the power of AI-driven technology that adapts to your needs.</p>
+                    <div class="buttons">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-brain"></i>
+                            Explore AI
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i>
+                            Contact Us
+                        </button>
+                    </div>
+                </div>
+                <div class="content-video-carousel">
+                    <h2>Sustainable Future</h2>
+                    <p>Join us in creating a sustainable future with eco-friendly technologies.</p>
+                    <div class="buttons">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-leaf"></i>
+                            Go Green
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-users"></i>
+                            Join Community
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const contents = document.querySelectorAll('.content');
+        let currentIndex = 0;
+
+        function showNextContent() {
+            contents[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % contents.length;
+            contents[currentIndex].classList.add('active');
+        }
+
+        setInterval(showNextContent, 3000);
+    </script>
+</body>
+</html>

@@ -225,154 +225,145 @@
             opacity: 1;
             pointer-events: all;
         }
-/*image carousels here*/
-.gallery-container {
-            width: 100%;
+/*video full widht here  here*/
+.hero-video-carousel {
+            position: relative;
             height: 100vh;
-            display: flex;
+            width: 100%;
             overflow: hidden;
-            position: relative;
         }
 
-        .gallery-section {
-            flex: 1;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid white;
-            transform: skewX(-10deg);
-            margin-left: -2px;
-        }
-
-        .image-wrapper {
+        video.video-bg {
             position: absolute;
-            width: 120%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            transform: skewX(10deg);
-            left: -10%;
-        }
-
-        .image-wrapper.active {
-            opacity: 1;
-        }
-
-        .image-wrapper img {
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            z-index: -1;
         }
 
-        /* Section Overlay */
-        .section-overlay {
+        .overlay-video-carousel {
             position: absolute;
             top: 0;
-            left: -10%;
-            width: 120%;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.5);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
             color: white;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            transform: skewX(10deg);
+            padding: 20px;
         }
 
-        .gallery-section:hover .section-overlay {
-            opacity: 1;
+        .title {
+            font-size: 4rem;
+            margin-top: 4rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        /* Middle Text */
-        .section-middle-text h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 0;
-        }
-
-        .section-middle-text p {
-            font-size: 1.5rem;
-            margin: 10px 0;
-        }
-
-        /* Bottom Left Text */
-        .section-bottom-left {
+        .container-video-carousel {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 5px;
+            bottom: 40px;
+            left: 40px;
+            width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
         }
 
-        /* Buttons */
+        .container-video-carousel:hover {
+            transform: translateY(-5px);
+        }
+
+        .content-video-carousel {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-video-carousel.active {
+            display: block;
+        }
+
+        .content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #4ecdc4;
+        }
+
+        .content-video-carousel p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: flex-start;
+        }
+
         .btn {
             padding: 10px 20px;
-            background-color: #ff6600;
-            color: white;
             border: none;
             border-radius: 30px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .btn:hover {
-            background-color: #e55a00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Icons */
-        .icon {
-            margin-right: 10px;
-            font-size: 1.5rem;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Media Queries for Mobile */
         @media (max-width: 768px) {
-            .gallery-container {
+            .title {
+                font-size: 2.5rem;
+                margin-top: 2rem;
+            }
+
+            .container-video-carousel {
+                width: calc(100% - 40px);
+                left: 20px;
+                bottom: 20px;
+                padding: 1rem;
+            }
+
+            .buttons {
                 flex-direction: column;
-                height: auto;
-                overflow: visible;
             }
 
-            .gallery-section {
-                height: 70vh;
-                transform: none;
-                margin-left: 0;
+            .btn {
                 width: 100%;
-            }
-
-            .image-wrapper {
-                width: 100%;
-                transform: none;
-                left: 0;
-            }
-
-            .section-overlay {
-                width: 100%;
-                left: 0;
-                opacity: 1;
-                background: rgba(0, 0, 0, 0.4);
-                transform: none;
-            }
-
-            .section-middle-text h2 {
-                font-size: 2rem;
-            }
-
-            .section-middle-text p {
-                font-size: 1.2rem;
-            }
-
-            .section-bottom-left {
-                bottom: 10px;
-                left: 10px;
-                font-size: 1rem;
+                justify-content: center;
             }
         }
 /*css of partners*/
@@ -1368,16 +1359,27 @@
             <div class="mt-8 space-y-6">
                 <button class="w-full text-left text-lg font-medium text-gray-700 hover:text-black"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="red" class="bi bi-house" viewBox="0 0 16 16">
                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
-                  </svg></button>
+                  </svg></button>Home
+                  <br>
+                  <br>
                  <a href="About Megha.html"><button class="w-full text-left text-lg font-medium text-gray-700 hover:text-black">About Us</button></a>
+                 <br>
+                 <br>
                  <a href="Core Business Page.html">
                 <button class="w-full text-left text-lg font-medium text-gray-700 hover:text-black">Core Equipments</button>
                 </a>
+                <br>
+                <br>
+                <a href="Projects.html">
                 <button class="w-full text-left text-lg font-medium text-gray-700 hover:text-black">Projects</button>
-                
+                </a>
+                <br>
+                <br>
                 <a href="CareersPage.html">
                 <button class="w-full text-left text-lg font-medium text-gray-700 hover:text-black">Careers</button>
                 </a>
+                <br>
+                <br>
                  <a href="Contact Page.html"><button class="w-full text-left text-lg font-medium text-gray-700 hover:text-black">Contact</button></a>
                 <div class="pt-6 border-t border-gray-200">
                     <button class="w-full text-left text-lg font-medium text-gray-700 hover:text-black mb-4">Plans</button>
@@ -1389,81 +1391,59 @@
         </div>
     </div>
 
-    <!-- Image Carousels -->
-    <div class="gallery-container" style="background-color: #002D62;">
-        <!-- Section 1 -->
-        <div class="gallery-section">
-            <div class="image-wrapper active">
-                <img src="/images/flyoverunder2.jpeg" alt="Section 1 Image 1">
-            </div>
-            <div class="image-wrapper">
-                <img src="/images/flyoverunder1" alt="Section 1 Image 2">
-            </div>
-            <div class="image-wrapper">
-                <img src="/images/image15.JPG" alt="Section 1 Image 3">
-            </div>
-            <!-- Middle Text -->
-            <div class="section-middle-text">
-                <h2>Flyover Construction</h2>
-                <p>Transforming Infrastructure</p>
-                <button class="btn"><i class="fas fa-info-circle icon"></i>Learn More</button>
-            </div>
-            <!-- Bottom Left Text -->
-            <div class="section-bottom-left">
-                <h3>Flyover Progress</h3>
-                <p>Building a better tomorrow, one step at a time.</p>
-            </div>
-        </div>
-
-        <!-- Section 2 -->
-        <div class="gallery-section">
-            <div class="image-wrapper active">
-                <img src="/images/image19.JPG" alt="Section 2 Image 1">
-            </div>
-            <div class="image-wrapper">
-                <img src="/images/flyoverimage11.JPG" alt="Section 2 Image 2">
-            </div>
-            <div class="image-wrapper">
-                <img src="/images/image6.JPG" alt="Section 2 Image 3">
-            </div>
-            <!-- Middle Text -->
-            <div class="section-middle-text">
-                <h2>Flyover Construction</h2>
-                <p>Transforming Infrastructure</p>
-                <button class="btn"><i class="fas fa-info-circle icon"></i>Learn More</button>
-            </div>
-            <!-- Bottom Left Text -->
-            <div class="section-bottom-left">
-                <h3>Flyover Progress</h3>
-                <p>Improving connectivity, improving life.</p>
-            </div>
-        </div>
-
-        <!-- Section 3 -->
-        <div class="gallery-section">
-            <div class="image-wrapper active">
-                <img src="/images/flyoverunder3.jpeg" alt="Section 3 Image 1">
-            </div>
-            <div class="image-wrapper">
-                <img src="/images/image3.JPG" alt="Section 3 Image 2">
-            </div>
-            <div class="image-wrapper">
-                <img src="/images/image19.JPG" alt="Section 3 Image 3">
-            </div>
-            <!-- Middle Text -->
-            <div class="section-middle-text">
-                <h2>Flyover Construction</h2>
-                <p>Transforming Infrastructure</p>
-                <button class="btn"><i class="fas fa-info-circle icon"></i>Learn More</button>
-            </div>
-            <!-- Bottom Left Text -->
-            <div class="section-bottom-left">
-                <h3>Flyover Progress</h3>
-                <p>Creating seamless travel experiences.</p>
+    <!-- Video on front page ----------------- -->
+    <div class="hero-video-carousel">
+        <video autoplay muted loop class="video-bg">
+            <source src="/images/megha new video.mp4" type="video/mp4">
+        </video>
+        <div class="overlay-video-carousel">
+            <h1 class="title">Welcome to the Future</h1>
+            <div class="container-video-carousel">
+                <div class="content active">
+                    <h2>Innovation at Its Best</h2>
+                    <p>Discover cutting-edge technology that transforms the way you live and work.</p>
+                    <div class="buttons">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            Get Started
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-info-circle"></i>
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                <div class="content-video-carousel">
+                    <h2>Smart Solutions</h2>
+                    <p>Experience the power of AI-driven technology that adapts to your needs.</p>
+                    <div class="buttons">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-brain"></i>
+                            Explore AI
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i>
+                            Contact Us
+                        </button>
+                    </div>
+                </div>
+                <div class="content-video-carousel">
+                    <h2>Sustainable Future</h2>
+                    <p>Join us in creating a sustainable future with eco-friendly technologies.</p>
+                    <div class="buttons">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-leaf"></i>
+                            Go Green
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-users"></i>
+                            Join Community
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 
 <!--section of clients here with html-->
 <section class="clients-section">
@@ -2181,23 +2161,17 @@
             });
         });
 
-         /* Image Carousel Function here -------------------------------- */
-         function rotateImages() {
-            document.querySelectorAll('.gallery-section').forEach(section => {
-                const images = section.querySelectorAll('.image-wrapper');
-                const activeImage = section.querySelector('.image-wrapper.active');
-                const nextImage = activeImage.nextElementSibling && 
-                                activeImage.nextElementSibling.classList.contains('image-wrapper') ? 
-                                activeImage.nextElementSibling : 
-                                images[0];
-                
-                activeImage.classList.remove('active');
-                nextImage.classList.add('active');
-            });
+         /* Video Carousel Function here  video full width here-------------------------------- */
+         const contents = document.querySelectorAll('.content');
+        let currentIndex = 0;
+
+        function showNextContent() {
+            contents[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % contents.length;
+            contents[currentIndex].classList.add('active');
         }
 
-        // Change images every 3 seconds
-        setInterval(rotateImages, 3000);
+        setInterval(showNextContent, 3000);
 
         /*js for partners section here-------------------------------------------------*/
         const observer = new IntersectionObserver((entries) => {
