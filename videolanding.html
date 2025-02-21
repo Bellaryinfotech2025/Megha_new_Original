@@ -1,225 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Landing Page</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-
-        .hero-video-carousel {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        video.video-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        .overlay-video-carousel {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            color: white;
-            padding: 20px;
-        }
-
-        .title {
-            font-size: 4rem;
-            margin-top: 4rem;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .container-video-carousel {
-            position: absolute;
-            bottom: 40px;
-            left: 40px;
-            width: 400px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .container-video-carousel:hover {
-            transform: translateY(-5px);
-        }
-
-        .content-video-carousel {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .content-video-carousel.active {
-            display: block;
-        }
-
-        .content h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: #4ecdc4;
-        }
-
-        .content-video-carousel p {
-            font-size: 1rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 0.8rem;
-            justify-content: flex-start;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
-            color: white;
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2.5rem;
-                margin-top: 2rem;
-            }
-
-            .container-video-carousel {
-                width: calc(100% - 40px);
-                left: 20px;
-                bottom: 20px;
-                padding: 1rem;
-            }
-
-            .buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Video Landing</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={
+theme:{
+extend:{
+colors:{
+primary:'#0EA5E9',
+secondary:'#64748B'
+},
+borderRadius:{
+'none':'0px',
+'sm':'4px',
+DEFAULT:'8px',
+'md':'12px',
+'lg':'16px',
+'xl':'20px',
+'2xl':'24px',
+'3xl':'32px',
+'full':'9999px',
+'button':'8px'
+}
+}
+}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+</style>
 </head>
-<body>
-    <div class="hero-video-carousel">
-        <video autoplay muted loop class="video-bg">
-            <source src="/images/megha new video.mp4" type="video/mp4">
-        </video>
-        <div class="overlay-video-carousel">
-            <h1 class="title">Welcome to the Future</h1>
-            <div class="container-video-carousel">
-                <div class="content active">
-                    <h2>Innovation at Its Best</h2>
-                    <p>Discover cutting-edge technology that transforms the way you live and work.</p>
-                    <div class="buttons">
-                        <button class="btn btn-primary">
-                            <i class="fas fa-rocket"></i>
-                            Get Started
-                        </button>
-                        <button class="btn btn-secondary">
-                            <i class="fas fa-info-circle"></i>
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-                <div class="content-video-carousel">
-                    <h2>Smart Solutions</h2>
-                    <p>Experience the power of AI-driven technology that adapts to your needs.</p>
-                    <div class="buttons">
-                        <button class="btn btn-primary">
-                            <i class="fas fa-brain"></i>
-                            Explore AI
-                        </button>
-                        <button class="btn btn-secondary">
-                            <i class="fas fa-paper-plane"></i>
-                            Contact Us
-                        </button>
-                    </div>
-                </div>
-                <div class="content-video-carousel">
-                    <h2>Sustainable Future</h2>
-                    <p>Join us in creating a sustainable future with eco-friendly technologies.</p>
-                    <div class="buttons">
-                        <button class="btn btn-primary">
-                            <i class="fas fa-leaf"></i>
-                            Go Green
-                        </button>
-                        <button class="btn btn-secondary">
-                            <i class="fas fa-users"></i>
-                            Join Community
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const contents = document.querySelectorAll('.content');
-        let currentIndex = 0;
-
-        function showNextContent() {
-            contents[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % contents.length;
-            contents[currentIndex].classList.add('active');
-        }
-
-        setInterval(showNextContent, 3000);
-    </script>
+<body class="bg-white">
+<div class="relative min-h-screen w-full overflow-hidden">
+<video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
+    <source src="/images/megha new video.mp4" type="video/mp4">
+</video>
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="relative z-10 container mx-auto px-4 py-20">
+<nav class="flex items-center justify-between mb-20">
+ 
+ 
+</nav>
+<div class="max-w-3xl mt-32">
+<h1 class="text-6xl font-bold text-white mb-8 leading-tight">Embrace the Future of Autonomous Flight</h1>
+<p class="text-xl text-white/90 mb-12">Where innovation meets imagination. We're pioneering the next generation of aerial mobility solutions, transforming the way we move through our cities.</p>
+<div class="flex gap-4">
+<button class="px-8 py-3 bg-primary text-white !rounded-button hover:bg-primary/90 transition-colors text-lg whitespace-nowrap">Get Started</button>
+<button class="px-8 py-3 bg-white/10 text-white border border-white/20 !rounded-button hover:bg-white/20 transition-colors text-lg whitespace-nowrap">Watch Demo</button>
+</div>
+</div>
+</div>
+<div class="relative z-10 container mx-auto px-4 mt-32">
+<div class="bg-white/95 backdrop-blur-sm p-12 !rounded-xl max-w-4xl mx-auto">
+<div class="text-center mb-8">
+<h3 class="text-2xl font-bold text-gray-900 mb-4">Ready to Transform Your Business?</h3>
+<p class="text-gray-600">Join thousands of forward-thinking companies already revolutionizing their operations with our autonomous flight solutions.</p>
+</div>
+<form class="flex gap-4">
+<input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 border border-gray-200 !rounded-button focus:outline-none focus:border-primary text-sm"/>
+<button type="submit" class="px-8 py-3 bg-primary text-white !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Get Started</button>
+</form>
+</div>
+</div>
+</div>
+<script>
+document.querySelector('form').addEventListener('submit', (e) => {
+e.preventDefault();
+const email = e.target.querySelector('input[type="email"]').value;
+if(!email) {
+const div = document.createElement('div');
+div.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg';
+div.textContent = 'Please enter your email';
+document.body.appendChild(div);
+setTimeout(() => div.remove(), 3000);
+return;
+}
+const div = document.createElement('div');
+div.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg';
+div.textContent = 'Thank you for your interest! We\'ll be in touch soon.';
+document.body.appendChild(div);
+setTimeout(() => div.remove(), 3000);
+e.target.reset();
+});
+</script>
 </body>
 </html>
